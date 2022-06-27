@@ -1,5 +1,5 @@
-class Solution(object):
-    def executeInstructions(self, n, startPos, s):
+class Solution:
+    def executeInstructions(self, n: int, startPos: List[int], s: str) -> List[int]:
         li = []
         count = 0;
         ini = startPos[0]
