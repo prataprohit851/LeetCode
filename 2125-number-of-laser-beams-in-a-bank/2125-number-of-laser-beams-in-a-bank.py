@@ -1,5 +1,5 @@
-class Solution(object):
-    def numberOfBeams(self, bank):
+class Solution:
+    def numberOfBeams(self, bank: List[str]) -> int:
         prevCamCount = 0
         cameraCount = 0
         beams = 0
