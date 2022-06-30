@@ -18,30 +18,19 @@ public:
 
 class Solution {
 public:
-    
     Node* connect(Node* root) {
         if(root == NULL) return NULL;
-        queue<Node*> st;
-        st.push(root);
-        
-        helper(st);
-        return root;
-    }
-    void helper(queue<Node*> st){
-        if(st.size() == 0) return;
-        queue<Node*> temp;
-        Node* prev = NULL;
-        while(st.size() != 0){
-            
-            prev = st.front();
-            st.pop();
-            
-            if(st.size() != 0) prev->next = st.front();
-            else prev->next = NULL;
-            
-            if(prev->left) temp.push(prev->left);
-            if(prev->right) temp.push(prev->right);
+        Node* ptr = root;
+        while(ptr->left!= NULL){
+            Node* qtr = ptr;
+            while(qtr != NULL){
+                qtr->left->next = qtr->right;
+                if(qtr->next == NULL) qtr->right->next = NULL;
+                else qtr->right->next = qtr->next->left;
+                qtr = qtr->next;
+            }
+            ptr = ptr->left;
         }
-        helper(temp);
+        return root;
     }
 };
