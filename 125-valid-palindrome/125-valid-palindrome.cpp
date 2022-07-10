@@ -9,9 +9,7 @@ public:
             if(i == s.length() || j < 0) return true;
             if(islower(s[i])) s[i] = toupper(s[i]);
             if(islower(s[j])) s[j] = toupper(s[j]);
-            if(s[i] != s[j]) return false;
-            i++;
-            j--;
+            if(s[i++] != s[j--]) return false;
         }
         return true;
     }
