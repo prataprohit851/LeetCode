@@ -1,5 +1,5 @@
-class Solution(object):
-    def wateringPlants(self, plants, capacity):
+class Solution:
+    def wateringPlants(self, plants: List[int], capacity: int) -> int:
         bucket = 0
         steps = 0
         for i in range(len(plants)):
