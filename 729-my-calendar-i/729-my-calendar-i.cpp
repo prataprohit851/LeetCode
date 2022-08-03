@@ -9,7 +9,7 @@ public:
     
     bool book(int start, int end) {
         for(auto it = st.begin(); it != st.end(); it++){
-            if(it->first <= start && it->second > start || it->first < end && it->second >= end || it->first >= start && it->first < end || it->second > start && it->second <= end) return false;
+            if(max(it->first, start) < min(it->second, end)) return false;
         }
         st.insert({start, end});
         return true;
