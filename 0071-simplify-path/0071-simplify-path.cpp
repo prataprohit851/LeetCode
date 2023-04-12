@@ -15,16 +15,11 @@ public:
             else if(s != "")st.push(s);
             i++;
         }
-        stack<string> st2;
-        while(st.size()){
-            cout<<st.top()<<endl;
-            st2.push(st.top());
-            st.pop();
-        }
         string ans = "";
-        while(st2.size()){
-            ans += '/' + st2.top();
-            st2.pop();
+        while(st.size()){
+            ans = "/" + st.top() + ans;
+            // st2.push(st.top());
+            st.pop();
         }
         return (ans == "") ? "/" : ans;
     }
