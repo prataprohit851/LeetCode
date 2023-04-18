@@ -12,14 +12,8 @@
 class Solution {
 public:
     int sumOfLeftLeaves(TreeNode* root, TreeNode* parent = NULL) {
-        if(root == NULL) return 0;
         int sum = 0;
-        if(parent == NULL){
-            sum += sumOfLeftLeaves(root->left, root);
-            sum += sumOfLeftLeaves(root->right, root);
-            return sum;
-        }
-        if(root->left == NULL && root->right == NULL && root == parent->left){
+        if(parent != NULL && (root->left == NULL && root->right == NULL && root == parent->left)){
             sum += root->val;
         }
         if(root->right) sum += sumOfLeftLeaves(root->right, root);
@@ -27,3 +21,23 @@ public:
         return sum;
     }
 };
+
+
+// class Solution {
+// public:
+//     int sumOfLeftLeaves(TreeNode* root, TreeNode* parent = NULL) {
+//         if(root == NULL) return 0;
+//         int sum = 0;
+//         if(parent == NULL){
+//             sum += sumOfLeftLeaves(root->left, root);
+//             sum += sumOfLeftLeaves(root->right, root);
+//             return sum;
+//         }
+//         if(root->left == NULL && root->right == NULL && root == parent->left){
+//             sum += root->val;
+//         }
+//         if(root->right) sum += sumOfLeftLeaves(root->right, root);
+//         if(root->left) sum += sumOfLeftLeaves(root->left, root);
+//         return sum;
+//     }
+// };
