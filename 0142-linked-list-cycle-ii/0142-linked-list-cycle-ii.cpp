@@ -9,14 +9,23 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-        if(head == NULL) return NULL;
-        set<ListNode*> st;
-        st.insert(head);
-        while(st.find(head->next) == st.end()){
-            st.insert(head->next);
-            head = head->next;
-            if(head == NULL) return NULL;
+        ListNode* fast = head;
+        ListNode* slow = head;
+
+        while(fast && fast->next){
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow == fast) break;
         }
-        return head->next;
+
+        if(!fast || !fast->next) return NULL;
+
+        while(head != fast){
+            cout<<"hes"<<endl;
+            head = head->next;
+            fast = fast->next;
+        }
+
+        return fast;
     }
 };
